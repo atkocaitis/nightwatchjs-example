@@ -1,9 +1,8 @@
 var chalk = require('chalk');
 
-var log = function(message, color, callback) {
-    var browser = this;
+var log = function(message, color) {
 
-    browser.perform(function() {
+    this.perform(function() {
 		switch(color) {
 			case "message":
 				console.log(chalk.bgGreen.bold('  ' + message +  '  '));
@@ -19,10 +18,6 @@ var log = function(message, color, callback) {
 				break;
 		}
     });
-
-    if (typeof callback === 'function') {
-        callback.call(this);
-    }
 
     return this;
 };
