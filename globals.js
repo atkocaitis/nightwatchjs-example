@@ -1,6 +1,7 @@
 module.exports = {
     'default': { 
-        baseURL : 'http://www.google.com'
+        baseURL : 'http://www.google.com',
+        logsEnabled : true
     },
     
     // Abord all on test fail
@@ -18,8 +19,8 @@ module.exports = {
 
     beforeEach: function(browser, done) {
         browser
-            .log("browser started", "message")
-            .windowMaximize()
+            .log("Browser started", "message")
+            .resize()
             .url(this.baseURL).perform(function() {
               done();
             });
@@ -28,7 +29,7 @@ module.exports = {
     afterEach: function(browser, done) {
         browser
             .end()
-            .log("browser stoped", "message").perform(function() {
+            .log("Browser stoped", "message").perform(function() {
               done();
             });
     }
